@@ -75,8 +75,8 @@ Finally, you can add the Shelly switch to your Home Assistant dashboard as a car
 
 You can also create automations to control when the generator runs based on entity attributes. For example, you might start the generator automatically at night if the battery state of charge (SoC) falls below 30%, and stop it once the battery has sufficiently charged. This ensures the generator only runs when necessary and avoids running through the night unnecessarily.
 
-### Considerations
+### Important Considerations
 
-Interrupting a generator during a scheduled charging cycle can be detrimental to battery health. For instance, if your battery system has not reached float charge in the past seven days, the Selectronic inverter will automatically start the generator to fully charge the batteries to float. Stopping or interrupting this float charging cycle may shorten battery lifespan and could potentially void your battery warranty.
+Interrupting a generator during a scheduled charging cycle can be detrimental to battery health. For instance, if your battery system has not reached float charge in the past seven days, the Selectronic inverter will automatically start the generator to fully charge the batteries to float. Stopping or interrupting this float charging cycle may shorten battery lifespan and could potentially **void your battery warranty**.
 
 [^1]: I highly recommend Tony Smith who has 15+ years experience in installing Selectronics inverters. His contact number is +61 457 573 794.
