@@ -4,7 +4,7 @@ This repository provides instructions for integrating the Selectronic SP Pro Ser
 
 ## Configuration
 
-There is currently no built-in [Add-on](https://www.home-assistant.io/addons/) or custom [HACS](https://www.hacs.xyz/) integration available. However, you can edit your [configuration.yaml](https://www.home-assistant.io/docs/configuration/) file to expose Selectronic attributes as entities in Home Assistant. These entities can then be used on dashboards, in automations, and more.
+There is currently no built-in [Add-on](https://www.home-assistant.io/addons/) or custom [HACS](https://www.hacs.xyz/) integration available for Selectronic inverters. However, you can edit your [configuration.yaml](https://www.home-assistant.io/docs/configuration/) file to expose Selectronic attributes as entities in Home Assistant. These entities can then be used on dashboards, in automations, and more.
 
 Refer to [configuration.yaml](configuration.yaml) for a list of available Selectronic attributes and entity configurations.
 
@@ -23,30 +23,42 @@ http://[local_ip]/cgi-bin/solarmonweb/devices/[device_id]/point
 3. Click on the "click here" link on that page. Then, right-click the 8-character device ID in the first column and select **Inspect** (in Chrome; this may differ in other browsers).
 4. In the Elements pane, look for an `id` attribute in the `<tr>` element just above the selected `<td>` element. It will be prefixed with `dev-`.
 5. Copy the value, remove the `dev-` prefix, and replace `[device_id]` in the URL with this 32-character string.
-6. Use this completed URL as the `resource` value in your YAML configuration (where `INSERT_URL_HERE` is indicated).
+6. Use this completed URL as the `resource` value in your [configuration.yaml](configuration.yaml) file (where `INSERT_URL_HERE` is indicated).
 
+![Locate Device Id](img/device-id.png)
+_Locating the device id in select.live web interface_
 
-
-The provided configuration file defines common entities you might want to include on your Home Assistant dashboard or in automations. Other attributes are commented out by default, but you can uncomment them if needed.
+The provided configuration file defines common entities you might want to include on your Home Assistant dashboard or in automations. Other attributes are commented out, but you can uncomment them if needed.
 
 ### Off-Grid Configuration Note
 
-The sample configuration is tailored for off-grid setups, where the "generator power" entity uses the `grid_w` attribute (since it represents the external power source in off-grid systems).
+The provided [configuration.yaml](configuration.yaml) is tailored for off-grid setups, where the "generator power" entity uses the `grid_w` attribute (since it represents the external power source in off-grid systems).
 
-After saving your YAML file, perform a **quick reload** to make the new entities available in Home Assistant.
+After editing and saving your YAML file, perform a **quick reload** to make the new entities available in Home Assistant.
 
 ## Dashboard Example
 
 Below is an example dashboard created using available Home Assistant cards. You can configure cards to be conditionally visible — for example, showing the generator power gauge only when the generator is running.
 
+![Home Assistant Dashboard with Selectronic entities](img/dashboard.png)
+_Example Home Assistant Dashboard_
 
 ## Generator Remote Start
 
 The SP Pro Series does not natively support remote start/stop of a connected generator. However, you can achieve this using a smart switch such as the [Shelly 1](https://www.shelly.com/products/shelly-1-gen3), wired to the generator's digital input.
 
-The communications card provides a 12V power source, which can power the Shelly switch and send a wire-start signal to the generator. Below is the wiring diagram for the Shelly 1 switch:
+![Wiring diagram for Selectronic digital input](img/wire-start.png)
+_Wiring diagram for Selectronic digital input_
+
+The communications card provides a 12V power source, which can power the Shelly switch and send a wire-start signal to the generator. Below is the wiring diagram for the Shelly 1 switch.
+
+![Wiring diagram for Selectronic digital input to Shelly switch](img/shelly-switch-wiring.jpg)
+_Wiring diagram for Selectronic digital input to Shelly switch_
 
 The switch can be surface-mounted inside the chassis using double-sided tape.
+
+![Shelly switch in Selectronic](img/shelly-selectronic-install.jpg)
+_Shelly switch surface-mounted in Selectronic inverter_
 
 > ⚡ **Important:** Installation should be completed by a qualified electrician.
 
