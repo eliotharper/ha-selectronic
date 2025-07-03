@@ -45,8 +45,7 @@ Below is an example dashboard created using available Home Assistant cards. You 
 
 The SP Pro Series does not natively support remote start/stop of a connected generator. However, you can achieve this using a smart switch such as the [Shelly 1](https://www.shelly.com/products/shelly-1-gen3), wired to the generator's digital input.
 
-![Wiring diagram for Selectronic digital input](img/wire-start.png)
-_Wiring diagram for Selectronic digital input_
+![Wiring diagram for Selectronic digital input](img/wire-start.png)<br>_Wiring diagram for Selectronic digital input_
 
 The communications card provides a 12V power source, which can power the Shelly switch and send a wire-start signal to the generator. Below is the wiring diagram for the Shelly 1 switch.
 
