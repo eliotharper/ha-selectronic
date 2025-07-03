@@ -71,6 +71,6 @@ After this setup, when you turn the switch on, it will immediately toggle off, s
 
 Next, configure the Digital Input in the SP LINK. This should be performed by a qualified Selectronic installer[^1] (which they can do remotely), and be configured via Configuration Settings > Inputs/Outputs.
 
-Finally, you can add the Shelly switch to your Home Assistant dashboard as a card, as shown in the dashboard example above.
+Finally, you can add the Shelly switch to your Home Assistant dashboard as a card, as shown in the [dashboard example](#dashboard-example) above.
 
 [^1]: I highly recommend Tony Smith who has 15+ years experience in installing Selectronics inverters. His contact number is +61 457 573 794.
