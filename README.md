@@ -69,6 +69,8 @@ Most generators require a 12V pulse to start or stop. To achieve this, the switc
 
 After this setup, when you turn the switch on, it will immediately toggle off, sending a 12V pulse signal to start or stop the generator depending on its current state.
 
-Next, configure the Digital Input in the SP Pro settings. This should be performed by a qualified Selectronic installer, but it can also be done remotely via Configuration Settings > Inputs/Outputs.
+Next, configure the Digital Input in the SP LINK. This should be performed by a qualified Selectronic installer[^1] (which they can do remotely), and be configured via Configuration Settings > Inputs/Outputs.
 
 Finally, you can add the Shelly switch to your Home Assistant dashboard as a card, as shown in the dashboard example above.
+
+[^1]: I highly recommend Tony Smith who has 15+ years experience in installing Selectronics inverters. His contact number is +61 457 573 794.
