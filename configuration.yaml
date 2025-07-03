@@ -1,0 +1,128 @@
+sensor:
+  - platform: rest
+    name: "selectronic"
+    json_attributes_path: "$.items"
+    json_attributes:
+      - "battery_in_wh_today"
+      - "battery_in_wh_total"
+      - "battery_out_wh_today"
+      - "battery_out_wh_total"
+      - "battery_soc"
+      - "battery_w"
+      - "fault_code"
+      - "fault_ts"
+      - "gen_status"
+      - "load_w"
+      - "load_wh_today"
+      - "load_wh_total"
+      - "shunt_w"
+      - "solar_wh_today"
+      - "solar_wh_total"
+      - "solarinverter_w"
+      - "timestamp"
+      - "grid_in_wh_today"
+      - "grid_in_wh_total"
+      - "grid_out_wh_today"
+      - "grid_out_wh_total"
+      - "grid_w"
+    resource: "INSERT_URL_HERE"
+    value_template: "{{ value_json.device.name }}"
+    force_update: true
+    unique_id: sensor.selectronic
+
+template:
+  sensor:
+    - name: "solar power"
+      device_class: power
+      state: '{{[ 0, (state_attr("sensor.selectronic", "solarinverter_w") | float(0) / 1000) | round(1)] | max }}'
+      unit_of_measurement: "kW"
+      unique_id: sensor.selectronic.solarnow
+
+    - name: "generator power"
+      device_class: power
+      state: '{{[ 0, (state_attr("sensor.selectronic", "grid_w") *-1 / 1000) | round(1)] | max }}'
+      unit_of_measurement: "kW"
+      unique_id: sensor.selectronic.gennow
+
+    - name: "power load"
+      device_class: power
+      state: '{{(state_attr("sensor.selectronic", "load_w") | float(0) / 1000) | round(1)}}'
+      unit_of_measurement: "kW"
+      unique_id: sensor.selectronic.load
+
+    - name: "battery load"
+      device_class: power
+      state: '{{(state_attr("sensor.selectronic", "battery_w") | float(0) / 1000) | round(1)}}'
+      unit_of_measurement: "kW"
+      unique_id: sensor.selectronic.batload
+
+    - name: "battery charge"
+      device_class: power
+      state: '{{((state_attr("sensor.selectronic", "solarinverter_w") | float(0) / 1000) + (state_attr("sensor.selectronic", "grid_w") | float(0) / 1000) + (state_attr("sensor.selectronic", "load_w") | float(0) / 1000)) | round(1)}}'
+      unit_of_measurement: "kW"
+      unique_id: sensor.selectronic.batcharge
+
+    - name: "battery soc"
+      device_class: battery
+      state: '{{(state_attr("sensor.selectronic", "battery_soc") | float) | round(1)}}'
+      unit_of_measurement: "%"
+      unique_id: sensor.selectronic.soc
+
+    - name: "solar power last 24hrs"
+      device_class: energy
+      state_class: total
+      state: '{{(state_attr("sensor.selectronic", "solar_wh_today") | float(0)) | round(1)}}'
+      unit_of_measurement: "kWh" # ignore key: in kWh, not Wh
+      unique_id: sensor.selectronic.solartoday
+
+    - name: "battery charge in last 24hrs"
+      device_class: energy
+      state_class: total
+      state: '{{(state_attr("sensor.selectronic", "battery_in_wh_today") | float(0)) | round(1)}}'
+      unit_of_measurement: "kWh" # ignore key: in kWh, not Wh
+      unique_id: sensor.selectronic.batouttoday
+
+    - name: "battery charge out last 24hrs"
+      device_class: energy
+      state_class: total
+      state: '{{(state_attr("sensor.selectronic", "battery_out_wh_today") | float(0)) | round(1)}}'
+      unit_of_measurement: "kWh" # ignore key: in kWh, not Wh
+      unique_id: sensor.selectronic.batintoday
+
+    - name: "Generator Status" # gen_status entity always returns 0 so using grid_w instead
+      state: >
+        {% if is_state_attr("sensor.selectronic", "grid_w", 0) %}
+          standby
+        {% else %}
+          running
+        {% endif %}
+      unique_id: sensor.selectronic.genstatus
+
+    # - name: 'total power use'
+    #   device_class: energy
+    #   state_class: total
+    #   state: '{{(state_attr("sensor.selectronic", "load_wh_total") | float(0)) | round(3)}}'
+    #   unit_of_measurement: 'kWh'
+    #   unique_id: sensor.selectronic.usage
+
+    # - name: 'total solar production'
+    #   device_class: energy
+    #   state_class: total
+    #   state: "{{(state_attr('sensor.selectronic', 'solar_wh_total') | float(0)) | round(3)}}"
+    #   unit_of_measurement: "kWh"
+    #   unique_id: sensor.selectronic.solartotal
+
+    # - name: 'total battery in'
+    #   device_class: energy
+    #   state_class: total
+    #   state: '{{(state_attr("sensor.selectronic", "battery_in_wh_total") | float(0)) | round(3)}}'
+    #   unit_of_measurement: 'kWh'
+    #   unique_id: sensor.selectronic.batin
+
+    # - name: 'total battery out'
+    #   device_class: energy
+    #   state_class: total
+    #   state: '{{(state_attr("sensor.selectronic", "battery_out_wh_total") | float(0)) | round(3)}}'
+    #   unit_of_measurement: 'kWh'
+    #   unique_id: sensor.selectronic.batout
+
