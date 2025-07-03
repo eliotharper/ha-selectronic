@@ -25,7 +25,7 @@ http://[local_ip]/cgi-bin/solarmonweb/devices/[device_id]/point
 5. Copy the value, remove the `dev-` prefix, and replace `[device_id]` in the URL with this 32-character string.
 6. Use this completed URL as the `resource` value in your [configuration.yaml](configuration.yaml) file (where `INSERT_URL_HERE` is indicated).
 
-![Locate Device Id](img/device-id.png)
+<kbd> <img src="img/device-id.png" /> </kbd>
 _Locating the device id in select.live web interface_
 
 The provided configuration file defines common entities you might want to include on your Home Assistant dashboard or in automations. Other attributes are commented out, but you can uncomment them if needed.
