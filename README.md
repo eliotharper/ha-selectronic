@@ -40,7 +40,7 @@ After editing and saving your YAML file, perform a **quick reload** to make the 
 
 Below is an example dashboard created using available Home Assistant cards. You can configure cards to be conditionally visible — for example, showing the generator power gauge only when the generator is running.
 
-![Home Assistant Dashboard with Selectronic entities](img/dashboard.png)
+<kbd> <img src="img/dashboard.png" /> </kbd>
 _Example Home Assistant Dashboard_
 
 ## Generator Remote Start
