@@ -25,8 +25,7 @@ http://[local_ip]/cgi-bin/solarmonweb/devices/[device_id]/point
 5. Copy the value, remove the `dev-` prefix, and replace `[device_id]` in the URL with this 32-character string.
 6. Use this completed URL as the `resource` value in your [configuration.yaml](configuration.yaml) file (where `INSERT_URL_HERE` is indicated).
 
-<kbd> <img src="img/device-id.png" /> </kbd>
-_Locating the device id in select.live web interface_
+<kbd> <img src="img/device-id.png" /> </kbd><br>_Locating the device id in select.live web interface_
 
 The provided configuration file defines common entities you might want to include on your Home Assistant dashboard or in automations. Other attributes are commented out, but you can uncomment them if needed.
 
@@ -40,8 +39,7 @@ After editing and saving your YAML file, perform a **quick reload** to make the 
 
 Below is an example dashboard created using available Home Assistant cards. You can configure cards to be conditionally visible — for example, showing the generator power gauge only when the generator is running.
 
-<kbd> <img src="img/dashboard.png" /> </kbd>
-_Example Home Assistant Dashboard_
+<kbd> <img src="img/dashboard.png" /> </kbd><br>_Example Home Assistant Dashboard_
 
 ## Generator Remote Start
 
@@ -52,13 +50,11 @@ _Wiring diagram for Selectronic digital input_
 
 The communications card provides a 12V power source, which can power the Shelly switch and send a wire-start signal to the generator. Below is the wiring diagram for the Shelly 1 switch.
 
-![Wiring diagram for Selectronic digital input to Shelly switch](img/shelly-switch-wiring.jpg)
-_Wiring diagram for Selectronic digital input to Shelly switch_
+![Wiring diagram for Selectronic digital input to Shelly switch](img/shelly-switch-wiring.jpg)<br>_Wiring diagram for Selectronic digital input to Shelly switch_
 
 The switch can be surface-mounted inside the chassis using double-sided tape.
 
-![Shelly switch in Selectronic](img/shelly-selectronic-install.jpg)
-_Shelly switch surface-mounted in Selectronic inverter_
+![Shelly switch in Selectronic](img/shelly-selectronic-install.jpg)<br>_Shelly switch surface-mounted in Selectronic inverter_
 
 > ⚡ **Important:** Installation should be completed by a qualified electrician.
 
