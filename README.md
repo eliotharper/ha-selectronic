@@ -69,7 +69,7 @@ Most generators require a 12V pulse to start or stop. To achieve this, the switc
 
 After this setup, when you turn the switch on, it will immediately toggle off, sending a 12V pulse signal to start or stop the generator depending on its current state.
 
-Next, configure the Digital Input in the SP LINK. This should be performed by a qualified Selectronic installer[^1] (which they can do remotely), and can be configured via Configuration Settings > Inputs/Outputs.
+Next, configure the Digital Input in the SP LINK. This should be performed by a qualified Selectronic installer (which they can do remotely), and can be configured via Configuration Settings > Inputs/Outputs.
 
 Finally, you can add the Shelly switch to your Home Assistant dashboard as a card, as shown in the [dashboard example](#dashboard-example) above.
 
@@ -78,5 +78,3 @@ You can also create automations to control when the generator runs based on enti
 ### Important Considerations
 
 Interrupting a generator during a scheduled charging cycle can be detrimental to battery health. For instance, if your battery system has not reached float charge in the past seven days, the Selectronic inverter will automatically start the generator to fully charge the batteries to float. Stopping or interrupting this float charging cycle may shorten battery lifespan and could potentially **void your battery warranty**.
-
-[^1]: I highly recommend Tony Smith who has 15+ years experience in installing Selectronics inverters. His contact number is +61 457 573 794.
