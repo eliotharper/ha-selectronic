@@ -18,7 +18,7 @@ http://[local_ip]/cgi-bin/solarmonweb/devices/[device_id]/point
 
 **Steps to obtain the URL:**
 
-1. Log in to your router to view connected devices on your network and find the IP address assigned to your Select.live device.
+1. Check the LCD display of your [Select.live](https://www.selectronic.com.au/manuals/OI0009_01%20Select.live%20User%20Manual.pdf) device to retrieve the IP address assigned to your Select.live device (the `IP` parameter value).
 2. Open this IP address in your web browser. You should see a page [similar to this](img/select-live.png).
 3. Click on the "click here" link on that page. Then, right-click the 8-character device ID in the first column and select **Inspect** (in Chrome; this may differ in other browsers).
 4. In the Elements pane, look for an `id` attribute in the `<tr>` element just above the selected `<td>` element. It will be prefixed with `dev-`.
